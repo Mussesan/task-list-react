@@ -1,3 +1,5 @@
+import { InterfaceEstudo } from "@/types/estudo";
+
 export default function Cronometro(){
 
     return (<>

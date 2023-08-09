@@ -1,61 +1,70 @@
-import TimeInput from "@/components/TimeInput";
-import Inputlabel from "@/components/Inputlabel";
+"use client"
+//requisito do NextJS para que o componente
+// seja renderizado no navegador
+//pois por padrão, os componentes 
+//são renderizados em um component server
+
+import { useState } from "react";
+
 import ComomBtn from "@/components/ComomBtn";
-import List from "@/components/List";
+import List from "@/components/List/Lista";
+import Item from "@/components/List/Item";
 import Cronometro from "@/components/Cronometro";
+import Form from "@/components/form/Form";
+import { InterfaceEstudo } from "@/types/estudo";
+
 
 export default function Home() {
-  let systemTime = new Date();
-  let userTime: number = 600;
-  let systemHours = userTime / 60;
+
+  const [estudos, setEstudos] = useState<InterfaceEstudo[] | []> ([]);
+  const [selecionado, setSelecionado] = useState<InterfaceEstudo[]>();
+
+  function selecionaEstudo(tarefaSelecionada: InterfaceEstudo[]){
+    setSelecionado(tarefaSelecionada)
+  }
 
   return (
     <>
       <main className="pt-4 bg-[#242424] md:flex h-auto px-8 pb-10 container justify-between mx-auto scroll-smooth">
         <section>
-          <div
-            className={`md:w-[27rem] xs:w-72 h-48 md:h-32 bg-slate-500 rounded-lg
-            border-gray-400 border-2 px-3 py-2 mx-auto md:mt-[9rem]`}>
-            <div className="md:flex justify-around font-medium">
-              <div>
-                <h3 className="">Tarefa</h3>
-                <Inputlabel />
-              </div>
+            <Form setEstudos={setEstudos} />
+            <div className="my-4 font-cav text-center">
+              Selecione um card <br /> e clique em começar.
+            </div>
 
-              <div className="">
-                <h3 className="">Tempo</h3>
-                <TimeInput />
-              </div>
-            </div>
-            <div
-              className={`mx-auto xs:h-auto md:h-auto
-            flex justify-center items-center 
-          `}
-            >
-              <ComomBtn>Adicionar</ComomBtn>
-            </div>
-            <div className="mt-5 md:mt-6 font-cav text-center">
-              Selecione um card de tarefa <br /> e clique em começar.
-            </div>
-          </div>
-
-          <div className="mt-16 text-center">
+          <div className="text-center">
             <Cronometro />
             <div className="-mt-4">
               <ComomBtn>Começar</ComomBtn>
             </div>            
           </div>
         </section>
-        <section className="block md:flex-row text-center justify-center md:w-1/2 h-auto text-gray-200/95">
-          <span>
-            <h1 className="text-xl md:text-[2em] my-4">
-              Estudos:
-            </h1>
-            <List />
+        <section className="md:flex-row text-center justify-center md:w-1/2 h-auto text-gray-200/95 my-5">
+          <span className="">
+            <span className="md:text-[2em] my-4">
+              {estudos.length == 0 && (
+                <p className={`w-fit mx-auto md:text-[1.6rem]`}>Não há estudos ainda...</p>
+              )}
+              {estudos.length > 0 && (
+                <span className="flex justify-around w-full">
+                  <span className={` flex justify-around items-center w-[65%] mx-auto rounded-2xl
+                    shadow-inner mb-3 md:text-[1.6rem]`}>
+                    Estudos pendentes: 
+                      <span className={`ml-1 text-[1rem] rounded-full border-4 border-black p-4
+                      bg-gray-200/90 text-black font-bold w-[1.75rem] h-[1.75rem] flex justify-center items-center`}>
+                        {estudos.length}
+                      </span>
+                  </span>
+                </span>
+              )}
+            </span>
+            <List 
+              estudos={estudos} 
+              selecionaEstudo={selecionaEstudo}
+            />
           </span>
         </section>
       </main>
-      {/* teste */}
     </>
   );
 }
