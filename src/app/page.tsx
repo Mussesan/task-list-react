@@ -17,10 +17,10 @@ import { InterfaceEstudo } from "@/types/estudo";
 export default function Home() {
 
   const [estudos, setEstudos] = useState<InterfaceEstudo[] | []> ([]);
-  const [selecionado, setSelecionado] = useState<InterfaceEstudo[]>();
+  const [selecionado, setSelecionado] = useState<InterfaceEstudo>();
 
-  function selecionaEstudo(tarefaSelecionada: InterfaceEstudo[]){
-    setSelecionado(tarefaSelecionada)
+  function selecionaEstudo(estudoSelecionado: InterfaceEstudo){
+    setSelecionado(estudoSelecionado)
   }
 
   return (

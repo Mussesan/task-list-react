@@ -4,17 +4,17 @@ import Item from './Item';
 
 interface Props {
   estudos: InterfaceEstudo[],
-  selecionaTarefa: (tarefaSelecionada: InterfaceEstudo) => void 
+  selecionaEstudo: (estudoSelecionado: InterfaceEstudo) => void 
 }
 
-function Lista({ estudos, selecionaTarefa }: Props) {
+function Lista({ estudos, selecionaEstudo }: Props) {
   return (
     <aside>
       <h2> Estudos do dia </h2>
       <ul>
         {estudos.map(item => (
           <Item
-            selecionaTarefa={selecionaTarefa}
+            selecionaEstudo={selecionaEstudo}
             key={item.id}
             {...item}
           />

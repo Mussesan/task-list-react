@@ -1,25 +1,25 @@
 import { InterfaceEstudo } from '../../types/estudo';
 
 interface Props extends InterfaceEstudo {
-  selecionaTarefa: (tarefaSelecionada: InterfaceEstudo) => void
+  selecionaEstudo: (selecionaEstudo: InterfaceEstudo) => void
 }
 
 export default function Item(
   {
-    tarefa,
+    estudo,
     tempo,
     selecionado,
     completado,
     id,
-    selecionaTarefa
+    selecionaEstudo
   }: Props) {
-  console.log('item atual: ', { tarefa, tempo, selecionado, completado, id })
+  console.log('item atual: ', { estudo, tempo, selecionado, completado, id })
   return (
     <li
       className={``}
-      onClick={() => selecionaTarefa(
+      onClick={() => selecionaEstudo(
         {
-          tarefa,
+          estudo,
           tempo,
           selecionado,
           completado,
@@ -27,7 +27,7 @@ export default function Item(
         }
         )}
       >
-      <h3>{tarefa}</h3>
+      <h3>{estudo}</h3>
       <span>{tempo}</span>
     </li>
   )

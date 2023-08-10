@@ -1,7 +1,7 @@
 "use client"
 
 export interface InterfaceEstudo {
-    tarefa: string,
+    estudo: string,
     tempo: string,
     selecionado: boolean,
     completado: boolean,
