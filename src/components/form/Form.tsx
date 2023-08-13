@@ -2,6 +2,7 @@
 
 import React, { Dispatch, FormEvent } from "react";
 import { InterfaceEstudo } from "@/types/estudo";
+import {v4 as uuidv4 } from 'uuid'
 import ComomBtn from "../ComomBtn";
 
 class Form extends React.Component<{
@@ -16,8 +17,19 @@ class Form extends React.Component<{
 
     adicionarEstudo(event: React.FormEvent<HTMLFormElement>){
         event.preventDefault()
-        this.props.setEstudos(EstudosAtuais => [...EstudosAtuais, {...this.state}])
-        console.log("titulo: "+this.state," tempo: "+this.state) 
+        this.props.setEstudos(estudosAntigos => [...estudosAntigos,
+            {
+                ...this.state,
+                selecionado:false,
+                completado:false,
+                id:uuidv4()
+            }
+        ]);
+
+        this.setState({
+            titulo: "",
+            tempo: "00:00:00"
+        })
     }
 
     render(){

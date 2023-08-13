@@ -9,8 +9,7 @@ interface Props {
 
 function Lista({ estudos, selecionaEstudo }: Props) {
   return (
-    <aside>
-      <h2> Estudos do dia </h2>
+    <aside className=''>
       <ul>
         {estudos.map(item => (
           <Item
