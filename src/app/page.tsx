@@ -27,9 +27,27 @@ export default function Home() {
     })))
   }
 
+  function finalizaEstudo(){
+    if(selecionado){
+      setSelecionado(undefined)
+      setEstudos(estudosAnteriores =>
+        estudosAnteriores.map(estudo => {
+          if (estudo.id === selecionado.id){
+            return {
+              ...estudo,
+              selecionado: false,
+              completado: true
+            }
+          }
+          return estudo
+        })
+        )
+    }
+  }
+
   return (
     <>
-      <main className="pt-4 bg-[#242424] md:flex h-auto px-8 pb-10 container justify-between mx-auto scroll-smooth">
+      <main className="pt-4 bg-[#242424] md:flex h-auto pb-10  justify-between mx-auto scroll-smooth w-screen">
         <section>
             <Form setEstudos={setEstudos} />
             <div
@@ -39,9 +57,12 @@ export default function Home() {
             </div>
 
           <div className="text-center">
-            <Cronometro selecionado={selecionado} />
+            <Cronometro 
+            selecionado={selecionado}
+            finalizaEstudo={finalizaEstudo} 
+            />
             <div className="-mt-4">
-              <ComomBtn>Começar</ComomBtn>
+              
             </div>            
           </div>
         </section>
@@ -49,10 +70,10 @@ export default function Home() {
           <span className="">
             <span className="md:text-[2em] my-4">
               {estudos.length == 0 && (
-                <p className={`w-fit mx-auto md:text-[1.3rem]`}>Não há estudos ainda...</p>
+                <p className={`w-fit mx-auto md:text-[1.3rem] pt-5 md`}>Não há estudos ainda...</p>
               )}
               {estudos.length > 0 && (
-                <span className="flex justify-around w-full">
+                <span className="flex justify- w-full">
                   <span className={` flex justify-around items-center w-[65%] mx-auto rounded-2xl
                     shadow-inner mb-3 md:text-[1.3rem]`}>
                     Estudos pendentes: 

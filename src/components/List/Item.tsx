@@ -10,10 +10,11 @@ export default function Item(
     tempo,
     selecionado,
     completado,
+    ativo,
     id,
     selecionaEstudo
   }: Props) {
-  console.log('item atual: ', { titulo, tempo, selecionado, completado, id })
+  console.log('item atual: ', { titulo, tempo, selecionado, completado, ativo, id })
 
 const borderColorVariants = {
   selected: 'bg-gradient-to-tr from-purple-600 via-blue-600 to-cyan-500 p-[2px]'
@@ -23,25 +24,28 @@ const borderColorVariants = {
 
 const bgColorVariants = {
   selected: `bg-gray-700`,
-  unselected: `bg-[#212121]`
+  unselected: `bg-[#212121]`,
+  completed: 'bg-green-400/30 text-gray-700 font-bold text-'
 }
 
 // ${selecionado ? colorVariants.selected : colorVariants.unselected }
   return (
-    <div className={`w-full rounded-md mb-2
+    <div className={`w-[20rem] md:w-[28rem] rounded-md mb-2 
     ${selecionado ? borderColorVariants.selected : borderColorVariants.unselected }
     `} >
 
       <li
-        className={`flex justify-around rounded-md py-2 shadow-black
+        className={`flex justify-around rounded-md py-2 shadow-black 
         ${selecionado ? bgColorVariants.selected : bgColorVariants.unselected}
+        ${completado ? bgColorVariants.completed : ''}
         `} 
-        onClick={() => selecionaEstudo(
+        onClick={() => !completado && selecionaEstudo(
           {
             titulo,
             tempo,
             selecionado,
             completado,
+            ativo: true,
             id
           })}
         >

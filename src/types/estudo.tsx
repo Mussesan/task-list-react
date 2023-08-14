@@ -5,5 +5,6 @@ export interface InterfaceEstudo {
     tempo: string,
     selecionado: boolean,
     completado: boolean,
+    ativo: boolean,
     id: string
 }

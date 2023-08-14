@@ -22,6 +22,7 @@ class Form extends React.Component<{
                 ...this.state,
                 selecionado:false,
                 completado:false,
+                ativo: false,
                 id:uuidv4()
             }
         ]);
@@ -49,7 +50,7 @@ class Form extends React.Component<{
                             className={`
                                 rounded-md border-2 border-gray-600 shadow-slate-900 shadow-inner
                                 bg-gray-700/95 text-gray-100/95 font-light w-64 md:w-48 h-8
-                                mb-3 p-1
+                                mb-3 p-1 md:text-[0.86rem]
                             `}
                             id="estudo"
                             name="estudo"
@@ -70,7 +71,6 @@ class Form extends React.Component<{
                                 bg-gray-700/95 text-gray-100/95 font-light w-64 md:w-48 h-8
                                 mb-3 p-1
                             `}
-                            placeholder="Qual será o estudo de hoje?"
                             id="tempo"
                             name="tempo"
                             step="2"

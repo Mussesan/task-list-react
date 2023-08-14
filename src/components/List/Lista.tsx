@@ -9,7 +9,7 @@ interface Props {
 
 function Lista({ estudos, selecionaEstudo }: Props) {
   return (
-    <aside className=''>
+    <aside className='flex justify-center'>
       <ul>
         {estudos.map(item => (
           <Item
