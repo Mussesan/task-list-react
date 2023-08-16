@@ -51,19 +51,19 @@ export default function Cronometro({selecionado, finalizaEstudo} : Props){
               `}>
               <div className="flex justify-center items-center">
                 <span
-                  className={`border-2 rounded-md h-16 md:h-24 text-[2em] md:text-[4rem] shadow-inner
+                  className={`border-2 rounded-md w-12 md:w-[5.5rem] h-16 md:h-24 text-[2em] md:text-[4rem] shadow-inner
                   shadow-black bg-slate-600 py-2 md:py-0
                   `}>{horaDezena}{horaUnidade}
                 </span>
                 <span className="text-[3rem] md:font-bold">:</span>
                 <span
-                  className={`border-2 rounded-md h-16 md:h-24 text-[2em] md:text-[4rem] shadow-inner
+                  className={`border-2 rounded-md w-12 md:w-[5.5rem] h-16 md:h-24 text-[2em] md:text-[4rem] shadow-inner
                   shadow-black bg-slate-600 py-2 md:py-0
                   `}>{minutoDezena}{minutoUnidade}
                 </span>
                 <span className="text-[3rem] md:font-bold sm:font-thin">:</span>
                 <span
-                  className={`border-2 rounded-md h-16 md:h-24 text-[2em] md:text-[4rem] shadow-inner
+                  className={`border-2 rounded-md w-12 md:w-[5.5rem] h-16 md:h-24 text-[2em] md:text-[4rem] shadow-inner
                   shadow-black bg-slate-600 py-2 md:py-0
                   `}>{segundoDezena}{segundosUnidade}
                 </span>

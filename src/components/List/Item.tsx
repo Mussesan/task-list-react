@@ -17,25 +17,23 @@ export default function Item(
   console.log('item atual: ', { titulo, tempo, selecionado, completado, ativo, id })
 
 const borderColorVariants = {
-  selected: 'bg-gradient-to-tr from-purple-600 via-blue-600 to-cyan-500 p-[2px]'
-  ,
-  unselected: 'bg-gradient-to-tr from-gray-700 via-gray-500 to-slate-700 p-[2px]'
+  selected: 'bg-gradient-to-tr from-purple-600 via-blue-600 to-cyan-500 p-[2px] ',
+  unselected: 'bg-gradient-to-tl from-gray-700 via-gray-500 to-slate-700 p-[2px] cursor-pointer'
 }
 
 const bgColorVariants = {
   selected: `bg-gray-700`,
-  unselected: `bg-[#212121]`,
-  completed: 'bg-green-400/30 text-gray-700 font-bold text-'
+  unselected: `bg-[#191919]`,
+  completed: 'bg-green-500/30 text-gray-700 font-bold border-gray-700 cursor-default'
 }
 
-// ${selecionado ? colorVariants.selected : colorVariants.unselected }
   return (
-    <div className={`w-[20rem] md:w-[28rem] rounded-md mb-2 
+    <div className={`w-[20rem] md:w-[22rem] lg:w-[28rem] rounded-md mb-2 
     ${selecionado ? borderColorVariants.selected : borderColorVariants.unselected }
     `} >
 
       <li
-        className={`flex justify-around rounded-md py-2 shadow-black 
+        className={` justify-center rounded-md py-2 text-center shadow-black 
         ${selecionado ? bgColorVariants.selected : bgColorVariants.unselected}
         ${completado ? bgColorVariants.completed : ''}
         `} 
@@ -50,6 +48,9 @@ const bgColorVariants = {
           })}
         >
         <h3>{titulo}</h3>
+        <div className={`w-[30%] mx-auto border-b-[1px] border-dotted shadow-lg shadow-rose-100 my-1 
+        ${completado ? bgColorVariants.completed : ''}
+        `}></div>
         <span>{tempo}</span>
       </li>
 

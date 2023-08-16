@@ -6,13 +6,10 @@
 
 import { useState } from "react";
 
-import ComomBtn from "@/components/ComomBtn";
 import List from "@/components/List/Lista";
-import Item from "@/components/List/Item";
 import Cronometro from "@/components/Cronometro";
 import Form from "@/components/form/Form";
 import { InterfaceEstudo } from "@/types/estudo";
-
 
 export default function Home() {
 
@@ -47,7 +44,7 @@ export default function Home() {
 
   return (
     <>
-      <main className="pt-4 bg-[#242424] md:flex h-auto pb-10  justify-between mx-auto scroll-smooth w-screen">
+      <main className="pt-4 bg-[#242424] md:flex h-auto pb-10 container justify-around mx-auto scroll-smooth w-screen">
         <section>
             <Form setEstudos={setEstudos} />
             <div
@@ -68,19 +65,15 @@ export default function Home() {
         </section>
         <section className="md:flex-row text-center justify-center md:w-1/2 h-auto text-gray-200/95 my-5">
           <span className="">
-            <span className="md:text-[2em] my-4">
+            <span className="md:text-[2em] my-8">
               {estudos.length == 0 && (
                 <p className={`w-fit mx-auto md:text-[1.3rem] pt-5 md`}>Não há estudos ainda...</p>
               )}
               {estudos.length > 0 && (
-                <span className="flex justify- w-full">
-                  <span className={` flex justify-around items-center w-[65%] mx-auto rounded-2xl
-                    shadow-inner mb-3 md:text-[1.3rem]`}>
-                    Estudos pendentes: 
-                      <span className={`ml-1 text-[1rem] rounded-full border-4 border-black p-4
-                      bg-gray-200/90 text-black font-bold w-[1.75rem] h-[1.75rem] flex justify-center items-center`}>
-                        {estudos.length}
-                      </span>
+                <span className="flex justify- w-full mt-16 md:my-0">
+                  <span className={` flex justify-around items-center w-[65%] mx-auto rounded-2xl mb-3 md:text-[1.3rem]
+                   `}>
+                    Estudos:
                   </span>
                 </span>
               )}
